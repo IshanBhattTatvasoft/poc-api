@@ -25,44 +25,75 @@ functions:
           path: /get-all-users
           method: get
           cors: true
+          request:
+            parameters:
+              paths:
+                stage: true
       - http:
           path: /get-tasks-by-username
           method: post
           cors: true
+          request:
+            parameters:
+              paths:
+                stage: true          
       - http:
           path: /add-user
           method: post
           cors: true
+          request:
+            parameters:
+              paths:
+                stage: true          
       - http:
           path: /add-task
           method: post
           cors: true
+          request:
+            parameters:
+              paths:
+                stage: true          
       - http:
           path: /get-single-task
           method: post
           cors: true
+          request:
+            parameters:
+              paths:
+                stage: true          
       - http:
           path: /get-single-user
           method: post
           cors: true
+          request:
+            parameters:
+              paths:
+                stage: true        
       - http:
           path: /get-all-tasks
           method: get
           cors: true
+          request:
+            parameters:
+              paths:
+                stage: true
       - http:
           path: /update-user/{id}
           method: put
           request:
             parameters:
               paths:
+                stage: true
                 id: true
           cors: true
+
       - http:
           path: /update-task/{id}
           method: put
           request:
             parameters:
               paths:
+                stage: true
                 id: true
           cors: true
       - http:
@@ -71,6 +102,7 @@ functions:
           request:
             parameters:
               paths:
+                stage: true
                 id: true
           cors: true
       - http:
@@ -79,5 +111,6 @@ functions:
           request:
             parameters:
               paths:
+                stage: true            
                 id: true
           cors: true
