@@ -1,5 +1,5 @@
 /* eslint-disable */
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 import { addTask, addUser, deleteTask, deleteUser, getAllTasks, getAllUsers, getTaskById, getTaskByUsername, getUserById, updateTask, updateUser } from "../repository/poc-repo";
 
 const router: express.Router = express.Router();

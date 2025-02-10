@@ -8,6 +8,7 @@ interface TaskAttributes {
   task_name: string;
   task_priority: string;
   istaskcompleted: boolean;
+  task_deadline: Date;
 }
 
 type TaskCreationAttributes = Optional<TaskAttributes, "id">;
@@ -21,6 +22,7 @@ class Task
   public task_name!: string;
   public task_priority!: string;
   public istaskcompleted!: boolean;
+  public task_deadline!: Date;
 }
 
 Task.init(
@@ -51,6 +53,9 @@ Task.init(
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
+    task_deadline: {
+      type: DataTypes.DATE,
+    }
   },
   {
     sequelize,

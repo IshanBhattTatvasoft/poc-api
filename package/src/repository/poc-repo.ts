@@ -52,7 +52,7 @@ export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
       };
     }
 
-    const user = await User.findOne({ where: { username: username } });
+    const user = await User.findOne({ where: { username } });
     if (!user) {
       return {
         statusCode: 404,
@@ -62,24 +62,39 @@ export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
       };
     }
 
-    const result = await Task.findAll({ where: { user_id: user.id } });
+    const tasks = await Task.findAll({
+      where: { user_id: user.id },
+      attributes: ["id", "task_name", "task_priority", "istaskcompleted", "task_deadline"],
+    });
 
-    if (!result) {
+    if (!tasks.length) {
       return {
         statusCode: 404,
-        body: JSON.stringify({ error: "Task not found" }),
+        body: JSON.stringify({ error: "No tasks found" }),
       };
     }
+
+    const currentDate = new Date();
+    const updatedTasks = tasks.map((task) => {
+      const taskDeadline = new Date(task.task_deadline || currentDate); // Use current date if no deadline
+      const remainingDays = Math.ceil((taskDeadline.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24)); // Calculate difference in days
+      return {
+        ...task.toJSON(),
+        remaining_days: remainingDays > 0 ? remainingDays : "Overdue",
+      };
+    });
+
+    console.log("updatedTasks:: " + updatedTasks);
 
     return {
       statusCode: 200,
       body: JSON.stringify({
-        message: "Task fetched successfully!",
-        task: result,
+        message: "Tasks fetched successfully!",
+        tasks: updatedTasks,
       }),
     };
   } catch (err: any) {
-    console.log("Error getting task", err.message);
+    console.log("Error getting tasks", err.message);
     return {
       statusCode: 501,
       body: JSON.stringify({ error: err.message }),
@@ -155,14 +170,14 @@ export const addUser = async (req: Request): Promise<ApiResponse> => {
 };
 
 export const addTask = async (req: Request): Promise<ApiResponse> => {
-  const { username, task_name, task_priority } = req.body;
+  const { username, task_name, task_priority, task_deadline } = req.body;
   console.log("Username: " + username);
   try {
-    if (!username || !task_name || !task_priority) {
+    if (!username || !task_name || !task_priority || !task_deadline) {
       return {
         statusCode: 400,
         body: JSON.stringify({
-          message: "user name, task name and task priority are required.",
+          message: "user name, task name, task priority and task deadline are required.",
         }),
       };
     }
@@ -174,8 +189,8 @@ export const addTask = async (req: Request): Promise<ApiResponse> => {
     }
     console.log("User ID: " + user_id);
     const newTask = await Task.create(
-      { user_id, task_name, task_priority, istaskcompleted: false },
-      { fields: ["user_id", "task_name", "task_priority", "istaskcompleted"] }
+      { user_id, task_name, task_priority, istaskcompleted: false, task_deadline },
+      { fields: ["user_id", "task_name", "task_priority", "istaskcompleted", "task_deadline"] }
     );
 
     return {
@@ -271,11 +286,11 @@ export const getUserById = async (req: Request): Promise<ApiResponse> => {
 export const updateTask = async (req: Request): Promise<ApiResponse> => {
   try {
     const { id } = req.params;
-    const { task_name, task_priority, istaskcompleted } = req.body;
+    const { task_name, task_priority, istaskcompleted, task_deadline } = req.body;
 
-    console.log("Body: ", task_name, task_priority, istaskcompleted);
+    console.log("Body: ", task_name, task_priority, istaskcompleted, task_deadline);
 
-    if (istaskcompleted == null && !task_name && !task_priority) {
+    if (istaskcompleted == null && !task_name && !task_priority && !task_deadline) {
       return {
         statusCode: 400,
         body: JSON.stringify({
@@ -298,6 +313,7 @@ export const updateTask = async (req: Request): Promise<ApiResponse> => {
       task_name: task_name,
       task_priority: task_priority,
       istaskcompleted: istaskcompleted,
+      task_deadline: task_deadline
     });
 
     return {
