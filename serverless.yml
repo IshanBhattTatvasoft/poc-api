@@ -34,7 +34,18 @@ functions:
       - http:
           path: /get-all-users
           method: get
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
           request:
             parameters:
               paths:
@@ -42,7 +53,18 @@ functions:
       - http:
           path: /get-tasks-by-username
           method: post
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
           request:
             parameters:
               paths:
@@ -50,7 +72,18 @@ functions:
       - http:
           path: /add-user
           method: post
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
           request:
             parameters:
               paths:
@@ -58,7 +91,18 @@ functions:
       - http:
           path: /add-task
           method: post
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
           request:
             parameters:
               paths:
@@ -66,7 +110,18 @@ functions:
       - http:
           path: /get-single-task
           method: post
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
           request:
             parameters:
               paths:
@@ -74,7 +129,18 @@ functions:
       - http:
           path: /get-single-user
           method: post
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
           request:
             parameters:
               paths:
@@ -82,7 +148,18 @@ functions:
       - http:
           path: /get-all-tasks
           method: get
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
           request:
             parameters:
               paths:
@@ -95,7 +172,18 @@ functions:
               paths:
                 stage: true
                 id: true
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
 
       - http:
           path: /update-task/{id}
@@ -105,7 +193,18 @@ functions:
               paths:
                 stage: true
                 id: true
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
       - http:
           path: /delete-task/{id}
           method: delete
@@ -114,7 +213,18 @@ functions:
               paths:
                 stage: true
                 id: true
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
       - http:
           path: /delete-user/{id}
           method: delete
@@ -123,4 +233,15 @@ functions:
               paths:
                 stage: true            
                 id: true
-          cors: true
+          cors:
+            origin: "*"
+            headers:
+              - Content-Type
+              - X-Amz-Date
+              - Authorization
+              - X-Api-Key
+              - X-Amz-Security-Token
+              - X-Amz-User-Agent
+              - Language
+              - X-Requested-With
+            allowCredentials: true
