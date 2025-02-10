@@ -9,45 +9,12 @@ provider:
   name: aws
   runtime: nodejs20.x
   timeout: 30
-  region: eu-west-1
+  region: us-east-1
   environment:
     NODE_ENV: development
   apiGateway:
     restApiId: 28ivb3d4wd
     restApiRootResourceId: g6rv8zq0uc
-# provider:
-#   name: aws
-#   runtime: nodejs20.x
-#   timeout: 30
-#   region: us-east-1
-#   environment:
-#     NODE_ENV: development
-
-<<<<<<< HEAD
-# custom:
-#   version: v1
-#   apiGatewayId: 28ivb3d4wd
-#   apiGatewayRestApiRootResourceId: /g6rv8zq0uc
-#   # serverless-offline:
-#     # httpPort: 3000
-#   esbuild:
-#     minify: true
-#     exclude: []
-#     watch:
-#       pattern: ["./**/*.ts"]
-=======
-custom:
-  version: v1
-  apiGatewayId: 28ivb3d4wd
-  apiGatewayRestApiRootResourceId: g6rv8zq0uc
-  # serverless-offline:
-    # httpPort: 3000
-  esbuild:
-    minify: true
-    exclude: []
-    watch:
-      pattern: ["./**/*.ts"]
->>>>>>> b4ae6137d3865243716f6f2d26eb417a9f363042
 
 functions:
   api:
@@ -68,7 +35,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /get-tasks-by-username
           method: post
@@ -84,7 +51,7 @@ functions:
               - Language
               - X-Requested-With
         restApiId: 28ivb3d4wd
-        restApiRootResourceId: g6rv8zq0uc
+        restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /add-user
           method: post
@@ -100,7 +67,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /add-task
           method: post
@@ -116,7 +83,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /get-single-task
           method: post
@@ -132,7 +99,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /get-single-user
           method: post
@@ -148,7 +115,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /get-all-tasks
           method: get
@@ -164,7 +131,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /update-user/{id}
           method: put
@@ -184,7 +151,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /update-task/{id}
           method: put
@@ -204,7 +171,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /delete-task/{id}
           method: delete
@@ -224,7 +191,7 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /delete-user/{id}
           method: delete
@@ -244,4 +211,4 @@ functions:
               - Language
               - X-Requested-With
           restApiId: 28ivb3d4wd
-          restApiRootResourceId: g6rv8zq0uc
+          restApiRootResourceId: /g6rv8zq0uc
