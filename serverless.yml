@@ -11,6 +11,7 @@ provider:
   region: eu-west-1
   environment:
     NODE_ENV: development
+  stage: ${opt:stage, 'dev'}
   apiGateway:
     restApiId: 28ivb3d4wd
     restApiRootResourceId: g6rv8zq0uc  
@@ -30,84 +31,62 @@ functions:
     handler: handler.handler
     events:
       - http:
-          path: /test/get-all-users
+          path: /get-all-users
           method: get
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/get-tasks-by-username
+          path: /get-tasks-by-username
           method: post
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/add-user
+          path: /add-user
           method: post
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/add-task
+          path: /add-task
           method: post
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/get-single-task
+          path: /get-single-task
           method: post
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/get-single-user
+          path: /get-single-user
           method: post
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/get-all-tasks
+          path: /get-all-tasks
           method: get
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/update-user/{id}
+          path: /update-user/{id}
           method: put
           request:
             parameters:
               paths:
                 id: true
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/update-task/{id}
+          path: /update-task/{id}
           method: put
           request:
             parameters:
               paths:
                 id: true
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/delete-task/{id}
+          path: /delete-task/{id}
           method: delete
           request:
             parameters:
               paths:
                 id: true
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
       - http:
-          path: /test/delete-user/{id}
+          path: /delete-user/{id}
           method: delete
           request:
             parameters:
               paths:
                 id: true
           cors: true
-          restApiId: amumt5qu31
-          restApiRootResourceId: ed4itj2h24
