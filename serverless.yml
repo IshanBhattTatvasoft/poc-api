@@ -8,14 +8,14 @@ provider:
   name: aws
   runtime: nodejs20.x
   timeout: 30
-  region: us-east-1
+  region: eu-west-1
   environment:
     NODE_ENV: development
 
 custom:
   version: v1
   apiGatewayId: amumt5qu31
-  apiGatewayRestApiRootResourceId: /ed4itj2h24
+  apiGatewayRestApiRootResourceId: ed4itj2h24
   serverless-offline:
     httpPort: 3000
   esbuild:
@@ -33,43 +33,43 @@ functions:
           method: get
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /get-tasks-by-username
           method: post
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /add-user
           method: post
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /add-task
           method: post
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /get-single-task
           method: post
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /get-single-user
           method: post
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /get-all-tasks
           method: get
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /update-user/{id}
           method: put
@@ -79,7 +79,7 @@ functions:
                 id: true
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /update-task/{id}
           method: put
@@ -89,7 +89,7 @@ functions:
                 id: true
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /delete-task/{id}
           method: delete
@@ -99,7 +99,7 @@ functions:
                 id: true
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
       - http:
           path: /delete-user/{id}
           method: delete
@@ -109,4 +109,4 @@ functions:
                 id: true
           cors: true
           restApiId: amumt5qu31
-          restApiRootResourceId: /ed4itj2h24
+          restApiRootResourceId: ed4itj2h24
