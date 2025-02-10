@@ -45,7 +45,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
           request:
             parameters:
               paths:
@@ -64,7 +64,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
           request:
             parameters:
               paths:
@@ -83,7 +83,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
           request:
             parameters:
               paths:
@@ -102,7 +102,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
           request:
             parameters:
               paths:
@@ -121,7 +121,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
           request:
             parameters:
               paths:
@@ -140,7 +140,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
           request:
             parameters:
               paths:
@@ -159,7 +159,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
           request:
             parameters:
               paths:
@@ -183,7 +183,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
 
       - http:
           path: /update-task/{id}
@@ -204,7 +204,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
       - http:
           path: /delete-task/{id}
           method: delete
@@ -224,7 +224,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
+
       - http:
           path: /delete-user/{id}
           method: delete
@@ -244,4 +244,3 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-            allowCredentials: true
