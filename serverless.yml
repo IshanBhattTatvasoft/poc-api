@@ -36,6 +36,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
           request:
             parameters:
@@ -55,6 +56,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
           request:
             parameters:
@@ -74,6 +76,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
           request:
             parameters:
@@ -93,6 +96,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
           request:
             parameters:
@@ -112,6 +116,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
           request:
             parameters:
@@ -131,6 +136,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
           request:
             parameters:
@@ -150,6 +156,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
           request:
             parameters:
@@ -174,6 +181,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
 
       - http:
@@ -195,6 +203,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
       - http:
           path: /delete-task/{id}
@@ -215,6 +224,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
 
       - http:
           path: /delete-user/{id}
@@ -235,3 +245,4 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
