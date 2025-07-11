@@ -1,0 +1,14 @@
+# Don't track dependencies
+node_modules/
+
+# You DO want to track these:
+# .serverless/
+# buildspec/
+
+# Optional exclusions (keep if needed)
+.env
+.env.*
+.DS_Store
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
