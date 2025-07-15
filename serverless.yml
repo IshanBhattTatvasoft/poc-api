@@ -10,7 +10,7 @@ provider:
   runtime: nodejs20.x
   timeout: 30
   region: eu-west-1
-  stackName: poc-api
+  stackName: poc-api-v3
   environment:
     NODE_ENV: development
   apiGateway:
