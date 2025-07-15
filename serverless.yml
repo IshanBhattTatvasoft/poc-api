@@ -38,10 +38,6 @@ functions:
               - X-Requested-With
             allowCredentials: true
 
-          request:
-            parameters:
-              paths:
-                stage: true
       - http:
           path: /get-tasks-by-username
           method: post
@@ -57,11 +53,7 @@ functions:
               - Language
               - X-Requested-With
             allowCredentials: true
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+   
       - http:
           path: /add-user
           method: post
@@ -77,11 +69,7 @@ functions:
               - Language
               - X-Requested-With
             allowCredentials: true
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+        
       - http:
           path: /add-task
           method: post
@@ -97,11 +85,7 @@ functions:
               - Language
               - X-Requested-With
             allowCredentials: true
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+         
       - http:
           path: /get-single-task
           method: post
@@ -117,11 +101,7 @@ functions:
               - Language
               - X-Requested-With
             allowCredentials: true
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+         
       - http:
           path: /get-single-user
           method: post
@@ -137,11 +117,7 @@ functions:
               - Language
               - X-Requested-With
             allowCredentials: true
-
-          request:
-            parameters:
-              paths:
-                stage: true        
+       
       - http:
           path: /get-all-tasks
           method: get
@@ -158,10 +134,6 @@ functions:
               - X-Requested-With
             allowCredentials: true
 
-          request:
-            parameters:
-              paths:
-                stage: true
       - http:
           path: /update-user/{id}
           method: put
