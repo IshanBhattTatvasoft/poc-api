@@ -140,7 +140,6 @@ functions:
           request:
             parameters:
               paths:
-                stage: true
                 id: true
           cors:
             origin: "*"
@@ -162,7 +161,6 @@ functions:
           request:
             parameters:
               paths:
-                stage: true
                 id: true
           cors:
             origin: "*"
@@ -183,7 +181,6 @@ functions:
           request:
             parameters:
               paths:
-                stage: true
                 id: true
           cors:
             origin: "*"
@@ -204,7 +201,6 @@ functions:
           request:
             parameters:
               paths:
-                stage: true            
                 id: true
           cors:
             origin: "*"
