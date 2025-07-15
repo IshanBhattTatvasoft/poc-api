@@ -1,6 +1,6 @@
 import { Request } from "express";
-
-// import { sequelize } from "./db-connection/db-connect";
+import { Sequelize, QueryTypes } from "sequelize";
+import { sequelize } from "../db-connection/db-connect";
 import Task from "../models/task";
 import User from "../models/user";
 // import Task from "./models/task";
@@ -40,61 +40,40 @@ export const getAllUsers = async (): Promise<ApiResponse> => {
 };
 
 export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
-  console.log(req.body);
   const { username } = req.body;
+
+  if (!username) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: "username is required." }),
+    };
+  }
+
   try {
-    if (!username) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({
-          message: "username is required.",
-        }),
-      };
-    }
+    const tasks = await sequelize.query(
+      `SELECT * FROM public.get_tasks_by_username_v3(:input_username)`,
+      {
+        replacements: { input_username: username },
+        type: QueryTypes.SELECT,
+      }
+    );
 
-    const user = await User.findOne({ where: { username } });
-    if (!user) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-          message: `User with username: ${username} not found`,
-        }),
-      };
-    }
-
-    const tasks = await Task.findAll({
-      where: { user_id: user.id },
-      attributes: ["id", "task_name", "task_priority", "istaskcompleted", "task_deadline"],
-    });
-
-    if (!tasks.length) {
+    if (!tasks || tasks.length === 0) {
       return {
         statusCode: 404,
         body: JSON.stringify({ error: "No tasks found" }),
       };
     }
 
-    const currentDate = new Date();
-    const updatedTasks = tasks.map((task) => {
-      const taskDeadline = new Date(task.task_deadline || currentDate); // Use current date if no deadline
-      const remainingDays = Math.ceil((taskDeadline.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24)); // Calculate difference in days
-      return {
-        ...task.toJSON(),
-        remaining_days: remainingDays > 0 ? remainingDays : "Overdue",
-      };
-    });
-
-    console.log("updatedTasks:: " + updatedTasks);
-
     return {
       statusCode: 200,
       body: JSON.stringify({
         message: "Tasks fetched successfully!",
-        tasks: updatedTasks,
+        tasks,
       }),
     };
   } catch (err: any) {
-    console.log("Error getting tasks", err.message);
+    console.error("Error fetching tasks:", err.message);
     return {
       statusCode: 501,
       body: JSON.stringify({ error: err.message }),
