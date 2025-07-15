@@ -1,31 +1,20 @@
 service: poc-serverless-typescript
 
 plugins:
-  - serverless-offline
+#  - serverless-offline
+#  - serverless login
   - serverless-esbuild
 
 provider:
   name: aws
   runtime: nodejs20.x
   timeout: 30
-  region: eu-west-1
-  stackName: poc-api
+  region: us-east-1
   environment:
     NODE_ENV: development
-  stage: ${opt:stage, 'dev'}
   apiGateway:
-    restApiId: mraesrsn9j
-    restApiRootResourceId: n6kcchy3df  
-
-# custom:
-#   version: v1
-#   serverless-offline:
-#     httpPort: 3000
-#   esbuild:
-#     minify: true
-#     exclude: []
-#     watch:
-#       pattern: ["./**/*.ts"]
+    restApiId: n6kcchy3df
+    restApiRootResourceId: mraesrsn9j
 
 functions:
   api:
@@ -45,11 +34,8 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-          request:
-            parameters:
-              paths:
-                stage: true
+          restApiId: 693utogn2j
+          restApiRootResourceId: hoxnr8or62
       - http:
           path: /get-tasks-by-username
           method: post
@@ -64,11 +50,8 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+        restApiId: 28ivb3d4wd
+        restApiRootResourceId: /g6rv8zq0uc
       - http:
           path: /add-user
           method: post
@@ -83,11 +66,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+          
       - http:
           path: /add-task
           method: post
@@ -102,11 +81,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+          
       - http:
           path: /get-single-task
           method: post
@@ -121,11 +96,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-          request:
-            parameters:
-              paths:
-                stage: true          
+          
       - http:
           path: /get-single-user
           method: post
@@ -140,11 +111,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-          request:
-            parameters:
-              paths:
-                stage: true        
+          
       - http:
           path: /get-all-tasks
           method: get
@@ -159,18 +126,13 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-          request:
-            parameters:
-              paths:
-                stage: true
+          
       - http:
           path: /update-user/{id}
           method: put
           request:
             parameters:
               paths:
-                stage: true
                 id: true
           cors:
             origin: "*"
@@ -183,15 +145,13 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
-
+          
       - http:
           path: /update-task/{id}
           method: put
           request:
             parameters:
               paths:
-                stage: true
                 id: true
           cors:
             origin: "*"
@@ -204,14 +164,13 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
+          
       - http:
           path: /delete-task/{id}
           method: delete
           request:
             parameters:
               paths:
-                stage: true
                 id: true
           cors:
             origin: "*"
@@ -224,14 +183,13 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-
+          
       - http:
           path: /delete-user/{id}
           method: delete
           request:
             parameters:
               paths:
-                stage: true            
                 id: true
           cors:
             origin: "*"
@@ -244,3 +202,4 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+          
