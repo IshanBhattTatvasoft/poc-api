@@ -35,6 +35,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
           restApiId: 693utogn2j
           restApiRootResourceId: hoxnr8or62
       - http:
@@ -51,6 +52,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
+            allowCredentials: true
         restApiId: 28ivb3d4wd
         restApiRootResourceId: /g6rv8zq0uc
       - http:
@@ -67,7 +69,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /add-task
           method: post
@@ -82,7 +84,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /get-single-task
           method: post
@@ -97,7 +99,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /get-single-user
           method: post
@@ -112,7 +114,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /get-all-tasks
           method: get
@@ -127,7 +129,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /update-user/{id}
           method: put
@@ -146,7 +148,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /update-task/{id}
           method: put
@@ -165,7 +167,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /delete-task/{id}
           method: delete
@@ -184,7 +186,7 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
       - http:
           path: /delete-user/{id}
           method: delete
@@ -203,4 +205,4 @@ functions:
               - X-Amz-User-Agent
               - Language
               - X-Requested-With
-          
+            allowCredentials: true
