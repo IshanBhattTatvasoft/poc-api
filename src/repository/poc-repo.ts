@@ -1,6 +1,6 @@
 import { Request } from "express";
-
-// import { sequelize } from "./db-connection/db-connect";
+import { Sequelize, QueryTypes } from "sequelize";
+import { sequelize } from "../db-connection/db-connect";
 import Task from "../models/task";
 import User from "../models/user";
 // import Task from "./models/task";
@@ -52,32 +52,29 @@ export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
       };
     }
 
-    const user = await User.findOne({ where: { username: username } });
-    if (!user) {
+    try {
+      const tasks = await sequelize.query(
+        `SELECT * FROM public.get_tasks_by_username_v1(:input_username)`,
+        {
+          replacements: { input_username: username },
+          type: QueryTypes.SELECT,
+        }
+      );
+
       return {
-        statusCode: 404,
+        statusCode: 200,
         body: JSON.stringify({
-          message: `User with username: ${username} not found`,
+          message: "Tasks fetched successfully!",
+          tasks,
         }),
       };
-    }
-
-    const result = await Task.findAll({ where: { user_id: user.id } });
-
-    if (!result) {
+  } catch (err: any) {
+      console.error("Error fetching tasks:", err.message);
       return {
-        statusCode: 404,
-        body: JSON.stringify({ error: "Task not found" }),
+        statusCode: 501,
+        body: JSON.stringify({ error: err.message }),
       };
     }
-
-    return {
-      statusCode: 200,
-      body: JSON.stringify({
-        message: "Task fetched successfully!",
-        task: result,
-      }),
-    };
   } catch (err: any) {
     console.log("Error getting task", err.message);
     return {
