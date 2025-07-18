@@ -1,6 +1,6 @@
 import { Request } from "express";
-
-// import { sequelize } from "./db-connection/db-connect";
+import { Sequelize, QueryTypes } from "sequelize";
+import { sequelize } from "../db-connection/db-connect";
 import Task from "../models/task";
 import User from "../models/user";
 // import Task from "./models/task";
@@ -42,6 +42,7 @@ export const getAllUsers = async (): Promise<ApiResponse> => {
 export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
   console.log(req.body);
   const { username } = req.body;
+
   try {
     if (!username) {
       return {
@@ -52,20 +53,13 @@ export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
       };
     }
 
-    const user = await User.findOne({ where: { username } });
-    if (!user) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({
-          message: `User with username: ${username} not found`,
-        }),
-      };
-    }
-
-    const tasks = await Task.findAll({
-      where: { user_id: user.id },
-      attributes: ["id", "task_name", "task_priority", "istaskcompleted", "task_deadline"],
-    });
+    const tasks = await sequelize.query(
+      `SELECT * FROM public.get_tasks_by_username_v2(:input_username)`,
+      {
+        replacements: { input_username: username },
+        type: QueryTypes.SELECT,
+      }
+    );
 
     if (!tasks.length) {
       return {
@@ -74,27 +68,15 @@ export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
       };
     }
 
-    const currentDate = new Date();
-    const updatedTasks = tasks.map((task) => {
-      const taskDeadline = new Date(task.task_deadline || currentDate); // Use current date if no deadline
-      const remainingDays = Math.ceil((taskDeadline.getTime() - currentDate.getTime()) / (1000 * 60 * 60 * 24)); // Calculate difference in days
-      return {
-        ...task.toJSON(),
-        remaining_days: remainingDays > 0 ? remainingDays : "Overdue",
-      };
-    });
-
-    console.log("updatedTasks:: " + updatedTasks);
-
     return {
       statusCode: 200,
       body: JSON.stringify({
         message: "Tasks fetched successfully!",
-        tasks: updatedTasks,
+        tasks,
       }),
     };
   } catch (err: any) {
-    console.log("Error getting tasks", err.message);
+    console.error("Error fetching tasks:", err.message);
     return {
       statusCode: 501,
       body: JSON.stringify({ error: err.message }),
@@ -173,7 +155,7 @@ export const addTask = async (req: Request): Promise<ApiResponse> => {
   const { username, task_name, task_priority, task_deadline } = req.body;
   console.log("Username: " + username);
   try {
-    if (!username || !task_name || !task_priority || !task_deadline) {
+    if (!username || !task_name || !task_priority) {
       return {
         statusCode: 400,
         body: JSON.stringify({

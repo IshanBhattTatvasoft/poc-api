@@ -1,0 +1,41 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "Tatva4848#",
+    "database": "test_db",
+    "host": "poc-demo-database.cbqubpabumzf.eu-west-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "test": {
+    "username": "postgres",
+    "password": "Tatva4848#",
+    "database": "test_db",
+    "host": "poc-demo-database.cbqubpabumzf.eu-west-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  },
+  "production": {
+    "username": "postgres",
+    "password": "Tatva4848#",
+    "database": "test_db",
+    "host": "poc-demo-database.cbqubpabumzf.eu-west-1.rds.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true,
+        "rejectUnauthorized": false
+      }
+    }
+  }
+}
