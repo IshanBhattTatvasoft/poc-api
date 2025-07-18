@@ -23,6 +23,7 @@
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
     "sequelize-cli": "^6.6.3",
+    "serverless-aws-alias": "^1.8.0",
     "serverless-esbuild": "^1.54.6",
     "serverless-offline": "^14.4.0",
     "ts-mockito": "^2.6.1",
