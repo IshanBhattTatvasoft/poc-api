@@ -63,7 +63,7 @@ export const getTaskByUsername = async (req: Request): Promise<ApiResponse> => {
 
     if (!tasks.length) {
       return {
-        statusCode: 404,
+        statusCode: 200,
         body: JSON.stringify({ error: "No tasks found" }),
       };
     }

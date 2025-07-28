@@ -24,7 +24,7 @@ module.exports = {
           t.task_deadline::DATE,
           CASE 
             WHEN t.task_deadline IS NULL THEN 'No deadline'
-            WHEN t.task_deadline >= CURRENT_DATE THEN EXTRACT(DAY FROM (t.task_deadline - CURRENT_DATE))::INT || ' days'
+            WHEN t.task_deadline::date >= CURRENT_DATE THEN (t.task_deadline::date - CURRENT_DATE)::int || ' days'
             ELSE 'Overdue'
           END AS remaining_days
         FROM
