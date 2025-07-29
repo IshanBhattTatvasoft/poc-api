@@ -130,6 +130,18 @@ export const addUser = async (req: Request): Promise<ApiResponse> => {
       };
     }
 
+    const user = await User.findOne({ where: { username: username } });
+    console.log("user::: ", user);
+
+    if(user){
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          message: "Username already exists",
+        }),
+      };
+    }
+
     const newUser = await User.create(
       { username, password },
       { fields: ["username", "password"] }
